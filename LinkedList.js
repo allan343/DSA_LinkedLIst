@@ -113,6 +113,29 @@ class LinkedList {
        
     }
 
+    
+    size() { 
+        // Start at the head
+    
+        let currNode = this.head;
+        let size=0;
+        // If the list is empty
+        if (!this.head) {
+           console.log("list is empty")
+        }
+        let nextNode= currNode.next;
+        // Check for the item 
+        while (currNode !== null) {
+            /* Return null if it's the end of the list 
+               and the item is not on the list */
+          
+                currNode=currNode.next;
+            size++;
+        }
+        // Found it
+       console.log("size of list is "+ size);
+    }
+
     find(item) { 
         // Start at the head
         let currNode = this.head;
@@ -217,6 +240,8 @@ function arrayStuff(){
  console.log();
  ls.insertAt("Chief",3);
     display(ls);
+
+  ls.size();
 }
 
 arrayStuff()

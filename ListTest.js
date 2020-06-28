@@ -38,7 +38,7 @@ function display(ls){
      
      console.log(ls.find("Apollo"));
 
-     ls.insertLast("Boomer");
+     ls.insertFirst("Boomer");
      
      console.log(ls.find("Boomer"));
      //display(ls);
