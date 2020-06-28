@@ -2,7 +2,7 @@
 
 
 class _Node {
-    _Node(value, next) {
+    constructor(value, next) {
         this.value = value;
         this.next = next;
       
@@ -30,6 +30,60 @@ class LinkedList {
             tempNode.next = new _Node(item, null);
         }
     }
+
+    insertBefore(value,item) { 
+        // Start at the head
+        let currNode = this.head;
+        // If the list is empty
+        if (!this.head) {
+            return null;
+        }
+        let nextNode= currNode.next;
+        // Check for the item 
+        while (nextNode.value !== item) {
+            /* Return null if it's the end of the list 
+               and the item is not on the list */
+            if (nextNode.next === null) {
+                return null;
+            }
+            else {
+                // Otherwise, keep looking 
+                currNode=nextNode;
+                nextNode = currNode.next;
+               
+            }
+        }
+        // Found it
+       currNode.next= new _Node(value,nextNode);
+       // nextNode.next = new _Node(value, saveNext)
+    }
+
+    insertAfter(value,item) { 
+        // Start at the head
+        let currNode = this.head;
+        // If the list is empty
+        if (!this.head) {
+            return null;
+        }
+        let nextNode= currNode.next;
+        // Check for the item 
+        while (nextNode.value !== item) {
+            /* Return null if it's the end of the list 
+               and the item is not on the list */
+            if (nextNode.next === null) {
+                return null;
+            }
+            else {
+                // Otherwise, keep looking 
+                nextNode = nextNode.next;
+            }
+        }
+        // Found it
+        let saveNext= nextNode.next;
+        nextNode.next = new _Node(value, saveNext)
+    }
+
+
 
     find(item) { 
         // Start at the head
@@ -85,14 +139,13 @@ class LinkedList {
 function display(ls){
 let currNode = ls.head;
 
+console.log(currNode.value);
 
-
-while(currNode!==null){
+while(currNode.next!==null){
     //console.log(currNode.head.value);
-    currNode=ls.next;
-    console.log(ls.head.value);
+    currNode=currNode.next;
+    console.log(currNode.value);
 }
-
 
 }
 function arrayStuff(){
@@ -104,9 +157,33 @@ function arrayStuff(){
     var ls = new LinkedList();
 
     // Add an item to the array
- ls.insertFirst("Apollo");
- 
- //console.log(ls.find("Apollo"));
+    ls.insertLast("Apollo");
+     
+    // console.log(ls.find("Apollo"));
+
+     ls.insertLast("Boomer");
+     
+    // console.log(ls.find("Boomer"));
+
+     ls.insertLast("Helo");
+     
+    // console.log(ls.find("Helo"));
+
+     ls.insertLast("Husker");
+     
+     //console.log(ls.find("Husker"));
+
+     ls.insertLast("Starbuck");
+     
+    // console.log(ls.find("Starbuck"));
+    ls.insertLast("Tauhida");
+
+ //console.log("remove Husker");
+ ls.insertBefore("Adama","Husker");
+ display(ls);
+ console.log("now inserting after");
+ console.log(" ");
+ ls.insertAfter("Gaius","Adama");
  display(ls);
 }
 
