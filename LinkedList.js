@@ -136,6 +136,18 @@ class LinkedList {
        console.log("size of list is "+ size);
     }
 
+    isEmpty(){
+        let currNode = this.head;
+        if (currNode==null)
+        {
+            console.log("list is empty")
+
+        }
+        else{
+            console.log("list is not empty")
+        }
+    }
+
     find(item) { 
         // Start at the head
         let currNode = this.head;
@@ -242,6 +254,8 @@ function arrayStuff(){
     display(ls);
 
   ls.size();
+  
+  ls.isEmpty();
 }
 
 arrayStuff()
