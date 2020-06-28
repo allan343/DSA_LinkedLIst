@@ -133,7 +133,7 @@ class LinkedList {
             size++;
         }
         // Found it
-       console.log("size of list is "+ size);
+       return size;
     }
 
     isEmpty(){
@@ -166,6 +166,77 @@ class LinkedList {
                 // Otherwise, keep looking 
                 currNode = currNode.next;
             }
+        }
+        // Found it
+        return currNode;
+    }
+
+    findPrevious(item) { 
+        // Start at the head
+        let currNode = this.head;
+        let prevNode= null;
+        // If the list is empty
+        if (!this.head) {
+            return null;
+        }
+        // Check for the item 
+        while (currNode.value !== item) {
+            /* Return null if it's the end of the list 
+               and the item is not on the list */
+            if (currNode.next === null) {
+                return null;
+            }
+            else {
+                // Otherwise, keep looking 
+                prevNode= currNode;
+                currNode = currNode.next;
+            }
+        }
+        // Found it
+        return prevNode;
+    }
+
+    findLast() { 
+        // Start at the head
+        let currNode = this.head;
+     
+        // If the list is empty
+        if (!this.head) {
+            return null;
+        }
+        // Check for the item 
+        while (currNode.next !== null) {
+          
+                // Otherwise, keep looking 
+            //    console.log(currNode.value);
+                
+                currNode = currNode.next;
+            
+        }
+        // Found it
+        return currNode;
+    }
+
+    thirdFromEnd() { 
+        // Start at the head
+        let third = this.size()-3;
+        console.log(this.size());
+        console.log(third);
+        let currNode = this.head;
+        let pos = 0;
+        // If the list is empty
+        if (!this.head) {
+            return null;
+        }
+        // Check for the item 
+        while (pos<third) {
+          
+                // Otherwise, keep looking 
+            //    console.log(currNode.value);
+                
+                currNode = currNode.next;
+                pos++;
+            
         }
         // Found it
         return currNode;
@@ -210,6 +281,23 @@ while(currNode.next!==null){
     console.log(currNode.value);
 }
 
+}
+
+function WhatDoesThisProgramDo(lst) {
+    let current = lst.head;
+    while (current !== null) {
+        let newNode = current;
+        while (newNode.next !== null) {
+            if (newNode.next.value === current.value) {
+                newNode.next = newNode.next.next;
+            }
+            else {
+                newNode = newNode.next;
+            }
+        }
+        current = current.next;
+    }
+    return current;
 }
 function arrayStuff(){
 
@@ -256,6 +344,17 @@ function arrayStuff(){
   ls.size();
   
   ls.isEmpty();
+  let PrevNode= ls.findPrevious("Adama");
+  console.log(PrevNode.value);
+
+  let LastNode= ls.findLast();
+  console.log(LastNode);
+
+  let current = WhatDoesThisProgramDo(ls);
+  console.log(current);
+
+  let third = ls.thirdFromEnd();
+  console.log(third.value);
 }
 
 arrayStuff()
