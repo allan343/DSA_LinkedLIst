@@ -242,6 +242,45 @@ class LinkedList {
         return currNode;
     }
 
+    reverse() 
+    { 
+        // Initialize current, previous and 
+        // next pointers 
+       let currNode = this.head; 
+        let prevNode = null;
+        let nextNode = null; 
+  
+        while (currNode !== null) { 
+            // Store next 
+            nextNode = currNode.next; 
+  
+            // Reverse current node's pointer 
+            currNode.next = prevNode; 
+  
+            // Move pointers one position ahead. 
+            prevNode = currNode; 
+            currNode = nextNode; 
+        } 
+        this.head = prevNode; 
+    } 
+
+    middleOfList()  
+{  
+   let slow_ptr = this.head;  
+    let fast_ptr = this.head;  
+  
+    if (this.head!=null)
+    {  
+        while (fast_ptr != null && fast_ptr.next != null)  
+        {  
+            fast_ptr = fast_ptr.next.next;  
+            slow_ptr = slow_ptr.next;  
+        }  
+      //  printf("The middle element is [%d]\n\n", slow_ptr->data);  
+      console.log("The middle element is "+ slow_ptr.value);
+    }  
+}  
+
     remove(item){ 
         // If the list is empty
         if (!this.head) {
@@ -268,7 +307,47 @@ class LinkedList {
         }
         previousNode.next = currNode.next;
     }
+
+    SortedInsert(head, newNode)
+    {
+        let dummy= new _Node("",null);
+        let current =  new _Node("",dummy);
+        dummy.next = head;
+    
+        while (current.next != null && current.next.value < newNode.value)
+            current = current.next;
+    
+        newNode.next = current.next;
+        current.next = newNode;
+        head = dummy.next;
+    }
+    
+    
+    InsertSort()
+    {
+        let result = new _Node("",null); 	// build the answer here
+        let current =  new _Node("",this.head);	// iterate over the original list
+        let nextNode = current.next;
+    
+        while (current != null)
+        {
+            // tricky - note the next pointer before we change it
+            nextNode = current.next;
+    
+            this.SortedInsert(result, current);
+            current = nextNode;
+        }
+    
+        this.head = result;
+    }
+    
+
+
+
 }
+
+
+
 
 function display(ls){
 let currNode = ls.head;
@@ -353,8 +432,27 @@ function arrayStuff(){
   let current = WhatDoesThisProgramDo(ls);
   console.log(current);
 
+  console.log("third");
+  console.log();
   let third = ls.thirdFromEnd();
   console.log(third.value);
+    console.log("reverse");
+    console.log();
+  ls.reverse();
+
+  display(ls);
+
+  console.log("middle");
+  ls.middleOfList();
+
+  console.log("sort attempt");
+  var num = new LinkedList();
+  num.insertLast(3);
+  num.insertLast(2);
+  num.insertLast(5);
+  num.insertLast(6);
+  num.InsertSort();
+  display(num);
 }
 
 arrayStuff()
