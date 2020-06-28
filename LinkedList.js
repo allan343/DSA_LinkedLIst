@@ -341,7 +341,21 @@ class LinkedList {
         this.head = result;
     }
     
-
+  detectLoop() 
+{ 
+    let slow_p = this.head;  
+    let fast_p = this.head;  
+   // struct Node *slow_p = list, *fast_p = list; 
+  
+    while (slow_p && fast_p && fast_p.next) { 
+        slow_p = slow_p.next; 
+        fast_p = fast_p.next.next; 
+        if (slow_p == fast_p) { 
+           console.log("true"); 
+        } 
+    } 
+    console.log("false"); 
+} 
 
 
 }
@@ -447,10 +461,17 @@ function arrayStuff(){
 
   console.log("sort attempt");
   var num = new LinkedList();
+  console.log("before sort");
+  console.log();
   num.insertLast(3);
   num.insertLast(2);
   num.insertLast(5);
   num.insertLast(6);
+  num.insertLast(7);
+  num.insertLast(1);
+  display(num);
+  console.log("after sort");
+  console.log();
   num.InsertSort();
   display(num);
 }
