@@ -17,7 +17,7 @@ function arrayStuff(){
  
 
     // Create an instance of the Array class
-    let ls = new LinkedList();
+    var ls = new LinkedList();
 
     // Add an item to the array
  ls.insertFirst("Apollo");

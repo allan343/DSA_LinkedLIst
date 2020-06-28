@@ -82,4 +82,29 @@ class LinkedList {
     }
 }
 
+function display(ls){
+let currNode = ls.head;
+
+while(currNode!==null){
+    currNode=ls.next;
+}
+
+
+}
+function arrayStuff(){
+
+ 
+
+    // Create an instance of the Array class
+    var ls = new LinkedList();
+
+    // Add an item to the array
+ ls.insertFirst("Apollo");
+ 
+ console.log(ls.find("Apollo"));
+ display(ls);
+}
+
+arrayStuff()
+
 module.exports =new LinkedList;
