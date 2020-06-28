@@ -82,4 +82,4 @@ class LinkedList {
     }
 }
 
-module.exports =new LinkedList();
+module.exports =new LinkedList;
