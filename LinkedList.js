@@ -55,7 +55,7 @@ class LinkedList {
         }
         // Found it
        currNode.next= new _Node(value,nextNode);
-       // nextNode.next = new _Node(value, saveNext)
+       
     }
 
     insertAfter(value,item) { 
@@ -83,7 +83,35 @@ class LinkedList {
         nextNode.next = new _Node(value, saveNext)
     }
 
-
+    insertAt(value,pos) { 
+        // Start at the head
+        let index= pos-1;
+        let count=0;
+        let currNode = this.head;
+        // If the list is empty
+        if (pos=="0") {
+            this.insertFirst(value);
+        }
+        let nextNode= currNode.next;
+        // Check for the item 
+        while (count < index) {
+            /* Return null if it's the end of the list 
+               and the item is not on the list */
+            if (currNode.next === null) {
+                return null;
+            }
+            else {
+                // Otherwise, keep looking 
+                currNode=nextNode;
+                nextNode = currNode.next;
+               
+            }
+            count++;
+        }
+        // Found it
+       currNode.next= new _Node(value,nextNode);
+       
+    }
 
     find(item) { 
         // Start at the head
@@ -185,6 +213,10 @@ function arrayStuff(){
  console.log(" ");
  ls.insertAfter("Gaius","Adama");
  display(ls);
+ console.log("now inserting at");
+ console.log();
+ ls.insertAt("Chief",3);
+    display(ls);
 }
 
 arrayStuff()
